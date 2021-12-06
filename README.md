@@ -1,4 +1,4 @@
-# BOT_Discord_generalcommands
+# BOT Discord in js
 Bot Discord  using the library discord.js
 
 Library version: 12
