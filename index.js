@@ -36,11 +36,11 @@ fs.readdir("./commands/", (err, files) => {
 });
 
 client.on("ready", () => {
-  let ferinha = [
+  let status = [
       `${config.prefix}help`,
     ],
-    fera = 0;
-  setInterval( () => client.user.setActivity(`${ferinha[fera++ % ferinha.length]}`, {
+    teste = 0;
+  setInterval( () => client.user.setActivity(`${status[teste++ % status.length]}`, {
         type: "PLAYING" //mais tipos: WATCHING / LISTENING
       }), 1000 * 30); 
   client.user
@@ -48,9 +48,6 @@ client.on("ready", () => {
       .catch(console.error);
 console.log("(STATUS) Index status carregada!")
 });
-
-client.on('ready', () => {
-  console.log('ready');
 
  
 client.ws.on('INTERACTION_CREATE', async interaction => {
@@ -196,71 +193,5 @@ client.on("guildMemberRemove", async (member) => {
     msg.channel.send("**Meu prefixo é **`$`") 
   });
 
-  client.on('message', async message => {
-    if(message.author.bot) return;
-    if(message.content.indexOf(prefix) !== 0) return;
-  
-    const args = message.content.slice(prefix.length).trim().split(/ +/g);
-    const command = args.shift().toLowerCase();
-  
-    if(command == "ticket") {
-  
-        let channel = message.mentions.channels.first();
-        if(!channel) return message.reply("Use: `.ticket #channel`");
-  
-        let sent = await channel.send(new Discord.MessageEmbed()
-            .setTitle("Ticket")
-            .setDescription("Reaja com :ticket: para abrir um ticket!")
-            .setFooter("Zenitsu 2.0")
-            .setColor("BLUE")
-        );
-  
-        sent.react('🎫');
-        settings.set(`${message.guild.id}-ticket`, sent.id);
-  
-        message.channel.send("Ticket setado para o canal!")
-    }
-  
-    if(command == "close") {
-        if(!message.channel.name.includes("ticket-")) return message.channel.send("Você não pode usar aqui")
-        message.channel.delete();
-    }
-  });
-  
-  client.on('messageReactionAdd', async (reaction, user) => {
-    if(user.partial) await user.fetch();
-    if(reaction.partial) await reaction.fetch();
-    if(reaction.message.partial) await reaction.message.fetch();
-  
-    if(user.bot) return;
-  
-    let ticketid = await settings.get(`${reaction.message.guild.id}-ticket`);
-  
-    if(!ticketid) return;
-  
-    if(reaction.message.id == ticketid && reaction.emoji.name == '🎫') {
-        reaction.users.remove(user);
-  
-        reaction.message.guild.channels.create(`ticket-${user.username}`, {
-            permissionOverwrites: [
-                {
-                    id: user.id,
-                    allow: ["SEND_MESSAGES", "VIEW_CHANNEL"]
-                },
-                {
-                    id: reaction.message.guild.roles.everyone,
-                    deny: ["VIEW_CHANNEL"]
-                }
-            ],
-            type: 'text'
-        }).then(async channel => {
-            channel.send(`<@${user.id}>`, new Discord.MessageEmbed()
-            .setTitle("Bem-vindo ao ticket")
-            .setDescription("O suporte estará aqui em breve!")
-            .setColor("BLUE"))
-        })
-    }
-  });
-
-  console.log('[AUTHOR] - BOT by ThunderHB#0001') 
+  console.log('BOT by Thundert#4223') 
 client.login(config.token);
