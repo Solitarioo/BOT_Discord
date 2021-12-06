@@ -3,7 +3,7 @@ Bot Discord  using the library discord.js
 
 Library version: 12
 
-CONFIGURATION:
+Configuration:
 To configure go to config.json, and put your token and prefix!
 
 Install modules: 
