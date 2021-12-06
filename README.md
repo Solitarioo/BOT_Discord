@@ -1,7 +1,7 @@
 # BOT_Discord_generalcommands
 Bot Discord  in discord.js
 
-Version library: 12
+Liberary version: 12
 
 CONFIGURATION:
 To configure go to config.json, and put your token and prefix!
