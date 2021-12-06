@@ -1,5 +1,3 @@
-const express = require("express");
-const app = express();
 const { readFileSync } = require('fs')
 const Discord = require("discord.js");
 const fs = require("fs");
