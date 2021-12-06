@@ -1,5 +1,5 @@
 # BOT_Discord_generalcommands
-Bot Discord  in discord.js
+Bot Discord  using the library discord.js
 
 Library version: 12
 
