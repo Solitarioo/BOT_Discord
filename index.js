@@ -94,7 +94,6 @@ client.ws.on('INTERACTION_CREATE', async interaction => {
           });
       }
   });
-});
  
 async function createAPIMessage(interaction, content) {
   const apiMessage = await Discord.APIMessage.create(client.channels.resolve(interaction.channel_id), content)
